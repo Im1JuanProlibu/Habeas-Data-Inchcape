@@ -78,14 +78,14 @@
         <p style="text-align : justify; font-size: 1rem;">Con el registro de tu información, declaras que has sido
             informado por el grupo empresarial compuesto por las sociedades: Inchcape Colombia S.A.S, Derco Colombia
             S.A.S, Derco Agencia de Seguros LTDA., Matrase S.A.S, Distribuidora Hino de Colombia S.A.S e Inmobiliaria
-            Inchcape de Colombia S.A.S; en adelante “Las Compañías”, que serán el Responsable del Tratamiento de mis
+            Inchcape de Colombia S.A.S; en adelante "Las Compañías", que serán el Responsable del Tratamiento de mis
             Datos Personales, por lo que autorizo de manera previa, libre, voluntaria, inequívoca, expresa e informada a
-            “Las Compañías” o quien represente sus derechos, también a la sociedad matriz y/o subordinadas en Colombia o
+            "Las Compañías" o quien represente sus derechos, también a la sociedad matriz y/o subordinadas en Colombia o
             en el exterior, y en especial, a cualquiera de las sociedades del grupo Inchcape, dentro de las que se
             encuentra, IGBS Colombia S.A.S antes Bravoauto S.A.S, Inchcape DDC Colombia S.A.S, e incluyendo mas no
             limitándose a INCHCAPE PLC, y en general a sus aliados estratégicos y/o distribuidores autorizados,
-            fabricantes de vehículos que representan e importan y a los concesionarios autorizados de la red de “Las
-            Compañías” en Colombia a recolectar, almacenar, usar, circular y suprimir mis datos personales, conforme a
+            fabricantes de vehículos que representan e importan y a los concesionarios autorizados de la red de "Las
+            Compañías" en Colombia a recolectar, almacenar, usar, circular y suprimir mis datos personales, conforme a
             la Política de Tratamiento de Datos Personales descrita en el siguiente link
             https://www.inchcape.com/es-co/y en Cumplimiento de la ley 1581 de 2012, ley 1266 de 2008, ley 2300 de 2023
             y demás normas, modificatorias, aclaratorios, complementarias y/o derogatorias. Con la presente autorización
@@ -93,16 +93,16 @@
             ocasión durante el mismo día mediante: sms, whatsapp, correo electrónico, dirección de residencia, llamada
             telefónica y/o cualquier otro medio de comunicación instantáneo o formal por motivos de: envío de
             información relacionada con todo el concepto de experiencia de cualquiera de las marcas que hacen parte de
-            “Las Compañías”, ya sea para fines de actualización de datos, invitación a eventos, envío de publicidad,
+            "Las Compañías", ya sea para fines de actualización de datos, invitación a eventos, envío de publicidad,
             fines estadísticos, envío de información de productos y servicios, ofertas, descuentos, información
             corporativa, auditorias, seguimientos, promociones, encuestas, llamadas de seguimiento, envío de productos a
             la dirección de residencia, así como envío de información de campañas técnicas de servicio, seguridad o
-            “recall”, de productos financieros y de seguros para la adquisición de bienes y servicios de cualquiera de
-            las marcas que hacen parte de “Las Compañías”; de igual forma, esta autorización comprende el mandato
-            expreso para que mi información haga parte de la Base de Datos de cualquiera de “Las Compañías”, así como
+            "recall", de productos financieros y de seguros para la adquisición de bienes y servicios de cualquiera de
+            las marcas que hacen parte de "Las Compañías"; de igual forma, esta autorización comprende el mandato
+            expreso para que mi información haga parte de la Base de Datos de cualquiera de "Las Compañías", así como
             también pueda ser transferida y/o transmitida a otras compañías externas del Grupo Inchcape con residencia
             en Colombia o en otros países, incluyendo mas no limitándose a las marcas de los productos que importa,
-            comercializa y distribuyen “Las Compañías” en Colombia. Como titular de la información soy consciente que
+            comercializa y distribuyen "Las Compañías" en Colombia. Como titular de la información soy consciente que
             tengo el derecho a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la
             autorización otorgada para su trámite, revocar la autorización y/o solicitar la supresión de mis datos por
             medio de una solicitud escrita dirigida a: <a href="mailto:didacol@didacol.com"
@@ -127,8 +127,19 @@
     </div>
     <script>
         var cookie_name = 'habeas_' + emailEncrypt;
+
+        // Prolibu carga el HTML interno con ?source=none
+        // El source real del lead está en la ventana padre
         var habeas_url = new URL(window.location.href);
-        if (habeas_url.searchParams.get('source') && habeas_url.searchParams.get('source') != 'none') {
+        var source = habeas_url.searchParams.get('source');
+        if (!source || source === 'none') {
+            try {
+                var parent_url = new URL(window.parent.location.href);
+                source = parent_url.searchParams.get('source');
+            } catch(e) {}
+        }
+
+        if (source && source !== 'none') {
             if (!window.localStorage.getItem(cookie_name)) {
                 document.getElementById('habeas-data--snippet').style.display = 'block';
             }
