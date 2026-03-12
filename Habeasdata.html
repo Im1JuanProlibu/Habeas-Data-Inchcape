@@ -1,0 +1,174 @@
+<div id="habeas-data--snippet">
+    <style type="text/css">
+        #habeas-data--snippet {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(37 37 37 / 99%);
+            margin-left: -60px;
+            margin-top: -60px;
+            display: none;
+            z-index: 99999999999;
+        }
+
+        #habeas-data--snippet a {
+            text-decoration: underline !important;
+        }
+
+        #modal-habeas--data {
+            width: 80%;
+            padding: 40px 40px 25px 40px;
+            border: 1px solid rgb(131 125 125);
+            z-index: 2147483647;
+            background: white;
+        }
+
+        #habeas-data--snippet input,
+        #habeas-data--snippet button {
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 1px solid;
+            font-size: 20px;
+            background-color: white;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        #habeas-data--snippet label,
+        #habeas-data--snippet button {
+            cursor: pointer;
+        }
+
+        #habeas-data--snippet button {
+            font-weight: 600;
+            padding: 10px 15px;
+            font-size: 1.01rem;
+        }
+
+        #habeas-data--snippet input[type="radio"] {
+            -ms-transform: scale(1.9);
+            -webkit-transform: scale(1.9);
+            transform: scale(1.9);
+            position: initial;
+            opacity: inherit;
+            vertical-align: middle;
+            margin-left: 15px;
+            display: inline-block;
+        }
+
+        #habeas-data--snippet input[type='radio']:checked:after {
+            background-color: #ffa500;
+        }
+
+        #habeas-data--snippet #modal-habeas--data {
+            position: fixed;
+            left: 50%;
+            top: 120px;
+            transform: translate(-50%, -10%);
+            box-shadow: 0px 0px 10px 3px rgb(131 125 125);
+        }
+
+        @media only screen and (max-width: 600px) {
+            #habeas-data--snippet #modal-habeas--data {
+                top: 10%;
+            }
+        }
+    </style>
+    <div id="modal-habeas--data">
+        <p style="text-align : justify; font-size: 1rem;">Con el registro de tu información, declaras que has sido
+            informado por el grupo empresarial compuesto por las sociedades: Inchcape Colombia S.A.S, Derco Colombia
+            S.A.S, Derco Agencia de Seguros LTDA., Matrase S.A.S, Distribuidora Hino de Colombia S.A.S e Inmobiliaria
+            Inchcape de Colombia S.A.S; en adelante “Las Compañías”, que serán el Responsable del Tratamiento de mis
+            Datos Personales, por lo que autorizo de manera previa, libre, voluntaria, inequívoca, expresa e informada a
+            “Las Compañías” o quien represente sus derechos, también a la sociedad matriz y/o subordinadas en Colombia o
+            en el exterior, y en especial, a cualquiera de las sociedades del grupo Inchcape, dentro de las que se
+            encuentra, IGBS Colombia S.A.S antes Bravoauto S.A.S, Inchcape DDC Colombia S.A.S, e incluyendo mas no
+            limitándose a INCHCAPE PLC, y en general a sus aliados estratégicos y/o distribuidores autorizados,
+            fabricantes de vehículos que representan e importan y a los concesionarios autorizados de la red de “Las
+            Compañías” en Colombia a recolectar, almacenar, usar, circular y suprimir mis datos personales, conforme a
+            la Política de Tratamiento de Datos Personales descrita en el siguiente link
+            https://www.inchcape.com/es-co/y en Cumplimiento de la ley 1581 de 2012, ley 1266 de 2008, ley 2300 de 2023
+            y demás normas, modificatorias, aclaratorios, complementarias y/o derogatorias. Con la presente autorización
+            del tratamiento de mis datos personales se me podrá contactar dentro de una misma semana y en más de una
+            ocasión durante el mismo día mediante: sms, whatsapp, correo electrónico, dirección de residencia, llamada
+            telefónica y/o cualquier otro medio de comunicación instantáneo o formal por motivos de: envío de
+            información relacionada con todo el concepto de experiencia de cualquiera de las marcas que hacen parte de
+            “Las Compañías”, ya sea para fines de actualización de datos, invitación a eventos, envío de publicidad,
+            fines estadísticos, envío de información de productos y servicios, ofertas, descuentos, información
+            corporativa, auditorias, seguimientos, promociones, encuestas, llamadas de seguimiento, envío de productos a
+            la dirección de residencia, así como envío de información de campañas técnicas de servicio, seguridad o
+            “recall”, de productos financieros y de seguros para la adquisición de bienes y servicios de cualquiera de
+            las marcas que hacen parte de “Las Compañías”; de igual forma, esta autorización comprende el mandato
+            expreso para que mi información haga parte de la Base de Datos de cualquiera de “Las Compañías”, así como
+            también pueda ser transferida y/o transmitida a otras compañías externas del Grupo Inchcape con residencia
+            en Colombia o en otros países, incluyendo mas no limitándose a las marcas de los productos que importa,
+            comercializa y distribuyen “Las Compañías” en Colombia. Como titular de la información soy consciente que
+            tengo el derecho a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la
+            autorización otorgada para su trámite, revocar la autorización y/o solicitar la supresión de mis datos por
+            medio de una solicitud escrita dirigida a: <a href="mailto:didacol@didacol.com"
+                target="_blank">didacol@didacol.com</a> y <a href="mailto:servicioalcliente@derco.com.co"
+                target="_blank">servicioalcliente@derco.com.co</a>.</p>
+        <form id="modal-habeas--data-form">
+            <div style="padding-top: 15px; font-size: 1.04rem;">
+                <label style="color: black; font-weight: bold;"> Acepto </label><span
+                    style="color: red; margin-left: 5px; font-weight: 500;">política de tratamiento de datos </span>
+                <div style="display: initial;padding-left: 30px;">
+                    <label> Sí<input type="radio" checked="" class="checkmark" value="yes"
+                            name="habeas-data--check"></label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label> NO<input type="radio" class="checkmark" value="no" name="habeas-data--check"></label>
+                </div>
+            </div>
+            <div style="text-align: end; margin-top: 30px;">
+                <button type="submit" style="color:#000000 !important;">Aceptar</button>
+                <button type="cancel" style="color:#000000 !important;">Cancelar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        var cookie_name = 'habeas_' + emailEncrypt;
+        var habeas_url = new URL(window.location.href);
+        if (habeas_url.searchParams.get('source') && habeas_url.searchParams.get('source') != 'none') {
+            if (!window.localStorage.getItem(cookie_name)) {
+                document.getElementById('habeas-data--snippet').style.display = 'block';
+            }
+
+            function habeaSerializePrms(obj) {
+                var str = '';
+                for (var key in obj) {
+                    if (str != '') {
+                        str += '&';
+                    }
+                    str += key + '=' + encodeURIComponent(obj[key]);
+                }
+                return str;
+            }
+
+            document.getElementById('modal-habeas--data-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                var res = document.querySelector('[name="habeas-data--check"]:checked').value;
+                var body = {
+                    ip: ip,
+                    res: res,
+                    mail: window.emailEncrypt ? window.emailEncrypt : '',
+                    userAgent: window.userAgent ? window.userAgent : '',
+                };
+                var xhr = new XMLHttpRequest();
+                console.log('habeaSerializePrms(body)<<<', habeaSerializePrms(body));
+                var url_habeas = 'https://codehabeas.prolibu.com/sendEvidense?' + habeaSerializePrms(body);
+
+                xhr.open('GET', url_habeas);
+
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                xhr.addEventListener('load', function () {
+                    window.localStorage.setItem(cookie_name, res);
+                    window.location.reload();
+                });
+
+                xhr.send();
+            });
+        }
+    </script>
+</div>
