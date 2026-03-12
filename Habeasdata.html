@@ -10,11 +10,7 @@
             display: none;
             z-index: 99999999999;
         }
-
-        #habeas-data--snippet a {
-            text-decoration: underline !important;
-        }
-
+        #habeas-data--snippet a { text-decoration: underline !important; }
         #modal-habeas--data {
             width: 80%;
             padding: 40px 40px 25px 40px;
@@ -22,9 +18,7 @@
             z-index: 2147483647;
             background: white;
         }
-
-        #habeas-data--snippet input,
-        #habeas-data--snippet button {
+        #habeas-data--snippet input, #habeas-data--snippet button {
             font-weight: bold;
             text-transform: uppercase;
             border: 1px solid;
@@ -33,18 +27,8 @@
             padding: 5px;
             margin: 10px;
         }
-
-        #habeas-data--snippet label,
-        #habeas-data--snippet button {
-            cursor: pointer;
-        }
-
-        #habeas-data--snippet button {
-            font-weight: 600;
-            padding: 10px 15px;
-            font-size: 1.01rem;
-        }
-
+        #habeas-data--snippet label, #habeas-data--snippet button { cursor: pointer; }
+        #habeas-data--snippet button { font-weight: 600; padding: 10px 15px; font-size: 1.01rem; }
         #habeas-data--snippet input[type="radio"] {
             -ms-transform: scale(1.9);
             -webkit-transform: scale(1.9);
@@ -55,11 +39,7 @@
             margin-left: 15px;
             display: inline-block;
         }
-
-        #habeas-data--snippet input[type='radio']:checked:after {
-            background-color: #ffa500;
-        }
-
+        #habeas-data--snippet input[type='radio']:checked:after { background-color: #ffa500; }
         #habeas-data--snippet #modal-habeas--data {
             position: fixed;
             left: 50%;
@@ -67,15 +47,12 @@
             transform: translate(-50%, -10%);
             box-shadow: 0px 0px 10px 3px rgb(131 125 125);
         }
-
         @media only screen and (max-width: 600px) {
-            #habeas-data--snippet #modal-habeas--data {
-                top: 10%;
-            }
+            #habeas-data--snippet #modal-habeas--data { top: 10%; }
         }
     </style>
     <div id="modal-habeas--data">
-        <p style="text-align : justify; font-size: 1rem;">Con el registro de tu información, declaras que has sido
+        <p style="text-align: justify; font-size: 1rem;">Con el registro de tu información, declaras que has sido
             informado por el grupo empresarial compuesto por las sociedades: Inchcape Colombia S.A.S, Derco Colombia
             S.A.S, Derco Agencia de Seguros LTDA., Matrase S.A.S, Distribuidora Hino de Colombia S.A.S e Inmobiliaria
             Inchcape de Colombia S.A.S; en adelante "Las Compañías", que serán el Responsable del Tratamiento de mis
@@ -87,7 +64,7 @@
             fabricantes de vehículos que representan e importan y a los concesionarios autorizados de la red de "Las
             Compañías" en Colombia a recolectar, almacenar, usar, circular y suprimir mis datos personales, conforme a
             la Política de Tratamiento de Datos Personales descrita en el siguiente link
-            https://www.inchcape.com/es-co/y en Cumplimiento de la ley 1581 de 2012, ley 1266 de 2008, ley 2300 de 2023
+            https://www.inchcape.com/es-co/ en Cumplimiento de la ley 1581 de 2012, ley 1266 de 2008, ley 2300 de 2023
             y demás normas, modificatorias, aclaratorios, complementarias y/o derogatorias. Con la presente autorización
             del tratamiento de mis datos personales se me podrá contactar dentro de una misma semana y en más de una
             ocasión durante el mismo día mediante: sms, whatsapp, correo electrónico, dirección de residencia, llamada
@@ -110,11 +87,10 @@
                 target="_blank">servicioalcliente@derco.com.co</a>.</p>
         <form id="modal-habeas--data-form">
             <div style="padding-top: 15px; font-size: 1.04rem;">
-                <label style="color: black; font-weight: bold;"> Acepto </label><span
-                    style="color: red; margin-left: 5px; font-weight: 500;">política de tratamiento de datos </span>
-                <div style="display: initial;padding-left: 30px;">
-                    <label> Sí<input type="radio" checked="" class="checkmark" value="yes"
-                            name="habeas-data--check"></label>
+                <label style="color: black; font-weight: bold;"> Acepto </label>
+                <span style="color: red; margin-left: 5px; font-weight: 500;">política de tratamiento de datos</span>
+                <div style="display: initial; padding-left: 30px;">
+                    <label> Sí<input type="radio" checked="" class="checkmark" value="yes" name="habeas-data--check"></label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label> NO<input type="radio" class="checkmark" value="no" name="habeas-data--check"></label>
                 </div>
@@ -126,60 +102,52 @@
         </form>
     </div>
     <script>
-        var cookie_name = 'habeas_' + emailEncrypt;
+        (function() {
+            var habeasCookieName = 'habeas_' + emailEncrypt;
+            var habeasCurrentUrl = new URL(window.location.href);
+            var habeasSource = habeasCurrentUrl.searchParams.get('source');
 
-        // Prolibu carga el HTML interno con ?source=none
-        // El source real del lead está en la ventana padre
-        var habeas_url = new URL(window.location.href);
-        var source = habeas_url.searchParams.get('source');
-        if (!source || source === 'none') {
-            try {
-                var parent_url = new URL(window.parent.location.href);
-                source = parent_url.searchParams.get('source');
-            } catch(e) {}
-        }
-
-        if (source && source !== 'none') {
-            if (!window.localStorage.getItem(cookie_name)) {
-                document.getElementById('habeas-data--snippet').style.display = 'block';
+            if (!habeasSource || habeasSource === 'none') {
+                try {
+                    var habeasParentUrl = new URL(window.parent.location.href);
+                    habeasSource = habeasParentUrl.searchParams.get('source');
+                } catch(e) {}
             }
 
-            function habeaSerializePrms(obj) {
-                var str = '';
-                for (var key in obj) {
-                    if (str != '') {
-                        str += '&';
-                    }
-                    str += key + '=' + encodeURIComponent(obj[key]);
+            if (habeasSource && habeasSource !== 'none') {
+                if (!window.localStorage.getItem(habeasCookieName)) {
+                    document.getElementById('habeas-data--snippet').style.display = 'block';
                 }
-                return str;
-            }
 
-            document.getElementById('modal-habeas--data-form').addEventListener('submit', function (event) {
-                event.preventDefault();
+                function habeaSerializePrms(obj) {
+                    var str = '';
+                    for (var key in obj) {
+                        if (str != '') str += '&';
+                        str += key + '=' + encodeURIComponent(obj[key]);
+                    }
+                    return str;
+                }
 
-                var res = document.querySelector('[name="habeas-data--check"]:checked').value;
-                var body = {
-                    ip: ip,
-                    res: res,
-                    mail: window.emailEncrypt ? window.emailEncrypt : '',
-                    userAgent: window.userAgent ? window.userAgent : '',
-                };
-                var xhr = new XMLHttpRequest();
-                console.log('habeaSerializePrms(body)<<<', habeaSerializePrms(body));
-                var url_habeas = 'https://codehabeas.prolibu.com/sendEvidense?' + habeaSerializePrms(body);
-
-                xhr.open('GET', url_habeas);
-
-                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-                xhr.addEventListener('load', function () {
-                    window.localStorage.setItem(cookie_name, res);
-                    window.location.reload();
+                document.getElementById('modal-habeas--data-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    var habeasRes = document.querySelector('[name="habeas-data--check"]:checked').value;
+                    var habeasBody = {
+                        ip: ip,
+                        res: habeasRes,
+                        mail: window.emailEncrypt ? window.emailEncrypt : '',
+                        userAgent: window.userAgent ? window.userAgent : '',
+                    };
+                    var habeasXhr = new XMLHttpRequest();
+                    var habeasUrl = 'https://codehabeas.prolibu.com/sendEvidense?' + habeaSerializePrms(habeasBody);
+                    habeasXhr.open('GET', habeasUrl);
+                    habeasXhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    habeasXhr.addEventListener('load', function() {
+                        window.localStorage.setItem(habeasCookieName, habeasRes);
+                        window.location.reload();
+                    });
+                    habeasXhr.send();
                 });
-
-                xhr.send();
-            });
-        }
+            }
+        })();
     </script>
 </div>
