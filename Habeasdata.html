@@ -103,6 +103,9 @@
     </div>
     <script>
         (function() {
+            var testMode = true;
+            window.idBrand = null;
+            window.idAttribute = null;
             var habeasCookieName = 'habeas_' + emailEncrypt;
             var habeasCurrentUrl = new URL(window.location.href);
             var habeasSource = habeasCurrentUrl.searchParams.get('source');
@@ -137,10 +140,14 @@
                         mail: window.emailEncrypt ? window.emailEncrypt : '',
                         userAgent: window.userAgent ? window.userAgent : '',
                     };
+                    if (window.idBrand) habeasBody.idBrand = window.idBrand;
+                    if (window.idAttribute) habeasBody.idAttribute = window.idAttribute;
                     var habeasXhr = new XMLHttpRequest();
-                    var habeasUrl = 'https://codehabeas.prolibu.com/sendEvidense?' + habeaSerializePrms(habeasBody);
+                    var habeasBaseUrl = testMode ? 'https://cranial-deena-nonallegorically.ngrok-free.dev/sendEvidense?' : 'https://codehabeas.prolibu.com/sendEvidense?';
+                    var habeasUrl = habeasBaseUrl + habeaSerializePrms(habeasBody);
                     habeasXhr.open('GET', habeasUrl);
                     habeasXhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    if (testMode) habeasXhr.setRequestHeader('ngrok-skip-browser-warning', 'true');
                     habeasXhr.addEventListener('load', function() {
                         window.localStorage.setItem(habeasCookieName, habeasRes);
                         window.location.reload();
